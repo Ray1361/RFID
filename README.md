@@ -16,5 +16,15 @@ Android Application
     #into table product
     
     
+    
+#16th May 2018 
+#updates
+  #script
+    -DatabaseHelper.java
+      -display data function
+    -MainActivity.java
+      - after register -> go to loginActivity
+    -AddProduct.java
+      -after adding a product -> go to MainMenuActivity
       
       
