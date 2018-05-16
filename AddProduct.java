@@ -1,5 +1,6 @@
 package com.cybernaptics.rfidv3;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,8 @@ public class AddProduct extends AppCompatActivity {
                Boolean productinsert = db.productinsert(s1,s2,s3);
                if (productinsert == true) {
                    Toast.makeText(getApplicationContext(), "Insertion, complete", Toast.LENGTH_LONG).show();
+                   Intent mainmenu = new Intent(AddProduct.this, Main_menu.class);
+                   startActivity(mainmenu);
                }
                if (productinsert == false){
                    Toast.makeText(getApplicationContext(), "Retry", Toast.LENGTH_LONG).show();

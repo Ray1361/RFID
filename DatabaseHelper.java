@@ -14,9 +14,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // create table user & table product;
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE user(email text PRIMARY KEY, password TEXT);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS user(email text PRIMARY KEY, password TEXT);");
         db.execSQL("CREATE TABLE IF NOT EXISTS prod(productID INTEGER PRIMARY KEY AUTOINCREMENT, prodName TEXT, prodWei TEXT, prodBin TEXT);");
-        db.execSQL("CREATE TABLE bin(idBin INTEGER PRIMARY KEY AUTOINCREMENT, BIN_NAME TEXT, BIN_NUM TEXT);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS bin(idBin INTEGER PRIMARY KEY AUTOINCREMENT, BIN_NAME TEXT, BIN_NUM TEXT);");
     }
 
 
@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL("drop table if exists user;");
         db.execSQL("drop table if exists prod;");
-        db.execSQL("");
+        db.execSQL("drop table if exists bin;");
         onCreate(db);
     }
 
@@ -66,5 +66,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.getCount()>0) return true;
         else return false;
     }
+
+    //display all data for product
+    public Cursor getProduct(){
+        Cursor cursor =  getReadableDatabase().rawQuery("select * from prod;", null);
+        return cursor;
+    }
+    
 
 }

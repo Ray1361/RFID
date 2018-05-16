@@ -52,12 +52,16 @@ public class MainActivity extends AppCompatActivity
                             Boolean insert = db.insert(s1, s2);
                             if (insert == true) {
                                 Toast.makeText(getApplicationContext(), "Registration successfull", Toast.LENGTH_LONG).show();
+                                Intent login = new Intent(MainActivity.this, Login.class);
+                                startActivity(login);
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), "Email already exist", Toast.LENGTH_LONG).show();
                         }
                     }
-                    Toast.makeText(getApplicationContext(), "Password do not match", Toast.LENGTH_LONG).show();
+                    else {
+                        Toast.makeText(getApplicationContext(), "Password do not match", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
