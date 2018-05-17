@@ -33,5 +33,14 @@ public class Main_menu extends AppCompatActivity {
             }
         });
 
+        viewProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent viewProduct = new Intent(Main_menu.this, DisplayProduct.class);
+                startActivity(viewProduct);
+            }
+        });
+
     }
 }
